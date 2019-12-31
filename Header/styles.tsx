@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
       width: 0,
       height: 1
     },
+    zIndex: 9,
   },
   headerTitle: {
     display: 'flex',
@@ -46,6 +47,7 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '600',
     textAlign: 'center',
+    color: 'blue',
   }
 });
 

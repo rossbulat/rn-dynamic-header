@@ -1,70 +1,48 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Animated, Easing } from 'react-native'
 import { useScroller } from '../ScrollContext'
 import { styles } from './styles'
 
-const Header = (props: any) => {
+export const Header = (props: any) => {
 
-  // transition start y pos
-  const minOffset = 0;
+  const { offset, maxOffset, titleShowing, opacity } = useScroller();
 
-  // transition end y pos
-  const maxOffset = 30;
+  const [titleFade] = useState(
+    new Animated.Value(props.disableFade === true ? 1 : 0)
+  );
 
-  const [titleFade] = useState(new Animated.Value(0));
-  const [titleShowing, setTitleShowing] = useState(0);
+  useEffect(() => {
 
-  const scroller = useScroller();
+    if (props.disableFade)
+      return;
 
-  const fadeInAnim = Animated.timing(
-    titleFade, {
-    toValue: 1,
-    duration: 300,
-    useNativeDriver: true,
-    easing: Easing.sin
-  });
+    if (offset < maxOffset) {
+      titleShowing === false &&
+        Animated.timing(
+          titleFade, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true,
+          easing: Easing.sin
+        }).start();
 
-  const fadeOutAnim = Animated.timing(
-    titleFade, {
-    toValue: 0,
-    duration: 300,
-    useNativeDriver: true,
-    easing: Easing.sin
-  });
-
-  const withinLimits = (offset: number) => {
-    if (offset > maxOffset)
-      return maxOffset;
-    if (offset < minOffset)
-      return minOffset;
-    return offset;
-  }
-
-  const offset = withinLimits(scroller.currentOffset);
-
-  // trigger hide or show title when in limits
-  if (offset < maxOffset) {
-    if (titleShowing === 1) {
-      setTitleShowing(0);
-      fadeOutAnim.start();
+    } else {
+      titleShowing === true &&
+        Animated.timing(
+          titleFade, {
+          toValue: 1,
+          duration: 300,
+          useNativeDriver: true,
+          easing: Easing.sin
+        }).start();
     }
-
-  } else {
-    if (titleShowing === 0) {
-      setTitleShowing(1);
-      fadeInAnim.start();
-    }
-  }
-
-  // generate opacity value between 0 and 1
-  const opacity = offset * (maxOffset / 1000);
+  });
 
   return (
     <View style={{
       ...styles.header,
-      shadowOpacity: opacity,
-    }}
-    >
+      shadowOpacity: props.disableFade ? 1 : opacity,
+    }}>
       <View style={styles.headerLeft}>
         {props.headerLeft !== undefined && props.headerLeft}
       </View>
@@ -74,7 +52,7 @@ const Header = (props: any) => {
           ...styles.headerTitle,
         }}
       >
-        <Text style={{ ...styles.title, color: 'blue' }}>
+        <Text style={{ ...styles.title }}>
           {props.title}
         </Text>
       </Animated.View>
