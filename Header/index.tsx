@@ -18,7 +18,7 @@ export const Header = (props: any) => {
         Animated.timing(
           titleFade, {
           toValue: 0,
-          duration: 300,
+          duration: 200,
           useNativeDriver: true,
           easing: Easing.sin
         }).start();
@@ -28,7 +28,7 @@ export const Header = (props: any) => {
         Animated.timing(
           titleFade, {
           toValue: 1,
-          duration: 300,
+          duration: 200,
           useNativeDriver: true,
           easing: Easing.sin
         }).start();

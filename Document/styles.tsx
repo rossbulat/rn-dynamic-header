@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignContent: 'center',
     fontSize: 17,
+    fontWeight: '600',
   },
   paragraph: {
     marginVertical: 10,
