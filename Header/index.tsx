@@ -8,13 +8,10 @@ export const Header = (props: any) => {
   const { offset, maxOffset, titleShowing, opacity } = useScroller();
 
   const [titleFade] = useState(
-    new Animated.Value(props.disableFade === true ? 1 : 0)
+    new Animated.Value(0)
   );
 
   useEffect(() => {
-
-    if (props.disableFade)
-      return;
 
     if (offset < maxOffset) {
       titleShowing === false &&
@@ -41,7 +38,7 @@ export const Header = (props: any) => {
   return (
     <View style={{
       ...styles.header,
-      shadowOpacity: props.disableFade ? 1 : opacity,
+      shadowOpacity: opacity,
     }}>
       <View style={styles.headerLeft}>
         {props.headerLeft !== undefined && props.headerLeft}
@@ -52,7 +49,7 @@ export const Header = (props: any) => {
           ...styles.headerTitle,
         }}
       >
-        <Text style={{ ...styles.title }}>
+        <Text style={styles.title}>
           {props.title}
         </Text>
       </Animated.View>
