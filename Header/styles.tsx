@@ -48,7 +48,18 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     color: 'blue',
-  }
+  },
+  headerText: {
+    textAlign: 'center',
+    paddingHorizontal: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    alignContent: 'center',
+    fontSize: 17,
+    fontWeight: '600',
+  },
 });
 
 export default styles;

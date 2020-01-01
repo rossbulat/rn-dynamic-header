@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView } from 'react-native'
 import { Text } from '../Text'
 import Header from '../Header'
 import styles from './styles'
+import { styles as headerStyles } from '../Header/styles'
 import FontAwesome from 'react-native-vector-icons/Ionicons'
 import { useScroller } from '../ScrollContext'
 
@@ -16,7 +17,7 @@ export const Document = (props: any) => {
         title='My Header'
         headerLeft={
           <Text
-            style={styles.headerText}
+            style={headerStyles.headerText}
             onPress={() => console.log('Go Back')}
             primaryColor heading>
             <FontAwesome

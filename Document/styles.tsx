@@ -19,19 +19,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'blue',
   },
-  headerText: {
-    textAlign: 'center',
-    paddingHorizontal: 10,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    alignContent: 'center',
-    fontSize: 17,
-    fontWeight: '600',
-  },
   paragraph: {
     marginVertical: 10,
+    fontSize: 15,
+    fontWeight: '500',
+    lineHeight: 21,
   }
 })
 

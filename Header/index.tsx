@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { View, Text, Animated, Easing } from 'react-native'
 import { useScroller } from '../ScrollContext'
 import { styles } from './styles'
+import { HeaderProps } from './types'
 
-export const Header = (props: any) => {
+export const Header = (props: HeaderProps) => {
 
   const { offset, maxOffset, titleShowing, opacity } = useScroller();
 

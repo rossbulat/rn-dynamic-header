@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { ScrollView as ScrollViewNative } from 'react-native'
+import { ScrollContextInterface } from './types'
+import { Props } from '../types'
 
 const withinLimits = (offset: number, min: number, max: number) =>
   offset > max
@@ -8,7 +10,7 @@ const withinLimits = (offset: number, min: number, max: number) =>
       ? min
       : offset
 
-export const ScrollContext: React.Context<any> = React.createContext({
+export const ScrollContext = React.createContext<Partial<ScrollContextInterface>>({
   opacity: 0,
   maxOffset: 0,
   offset: 0,
@@ -18,7 +20,7 @@ export const ScrollContext: React.Context<any> = React.createContext({
 
 export const useScroller = () => React.useContext(ScrollContext);
 
-export const ScrollContextProvider = (props: any) => {
+export const ScrollContextProvider = (props: Props) => {
 
   const minOffset = 0;
   const maxOffset = 30;
@@ -46,7 +48,7 @@ export const ScrollContextProvider = (props: any) => {
   )
 }
 
-export const ScrollView = (props: any) => {
+export const ScrollView = (props: Props) => {
 
   const { maxOffset, titleShowing, opacity, updateOffset } = useScroller();
 
