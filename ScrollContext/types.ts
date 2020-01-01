@@ -3,5 +3,5 @@ export interface ScrollContextInterface {
   maxOffset: number;
   offset: number;
   titleShowing: boolean;
-  updateOffset?(val: number): void;
+  updateOffset (val: number): void;
 };
