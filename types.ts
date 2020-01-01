@@ -1,3 +1,3 @@
-export interface Props {
+export interface ChildProps {
   children: JSX.Element[] | JSX.Element
 }
