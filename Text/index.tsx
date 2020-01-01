@@ -1,19 +1,20 @@
 import React from 'react'
 import { Text as TextNative } from 'react-native'
+import { TextProps } from './types'
 
-const defaultText = '#000';
-const primaryText = 'blue';
+const defaultText: string = '#000';
+const primaryText: string = 'blue';
 
-export const Text = (props: any) => {
+export const Text = (props: TextProps) => {
 
-  const { style } = props;
+  const style: Object = props.style;
   let color: string = defaultText;
 
   if (style !== undefined) {
-    delete props['style'];
+    delete props.style;
 
-    if (style.color !== undefined)
-      color = style.color;
+    if (style['color'] !== undefined)
+      color = style['color'];
 
     if (props.primaryColor)
       color = primaryText;

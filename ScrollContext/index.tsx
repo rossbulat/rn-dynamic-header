@@ -3,7 +3,7 @@ import { ScrollView as ScrollViewNative } from 'react-native'
 import { ScrollContextInterface } from './types'
 import { Props } from '../types'
 
-const withinLimits = (offset: number, min: number, max: number) =>
+const withinLimits = (offset: number, min: number, max: number): number =>
   offset > max
     ? max
     : offset < min
