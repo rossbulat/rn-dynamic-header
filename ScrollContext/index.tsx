@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ScrollView as ScrollViewNative } from 'react-native'
+import { ScrollView as ScrollViewNative, ScrollViewProps } from 'react-native'
 import { ScrollContextInterface } from './types'
 import { ChildProps } from '../types'
 
@@ -35,6 +35,8 @@ export const ScrollContextProvider = (props: ChildProps) => {
     setOpacity(withinLimits(val * maxOffset / 1000, 0, 1));
   }
 
+  console.log('re-render');
+
   return (
     <ScrollContext.Provider value={{
       opacity: opacity,
@@ -48,21 +50,17 @@ export const ScrollContextProvider = (props: ChildProps) => {
   )
 }
 
-export const ScrollView = (props: ChildProps) => {
+export const ScrollView = (props: ChildProps & ScrollViewProps) => {
 
-  const { maxOffset, titleShowing, opacity, updateOffset } = useScroller();
+  const { updateOffset } = useScroller();
 
   return (
     <ScrollViewNative
       {...props}
       onScroll={({ nativeEvent }) => {
-        const offset = nativeEvent.contentOffset.y;
-        if (offset <= maxOffset && opacity !== 0
-          || offset > maxOffset && (titleShowing === false || opacity < 1)) {
-          updateOffset(offset);
-        }
+        updateOffset(nativeEvent.contentOffset.y);
       }}
-      scrollEventThrottle={500}
+      scrollEventThrottle={200}
     >
       {props.children}
     </ScrollViewNative>

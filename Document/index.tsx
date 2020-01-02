@@ -1,15 +1,15 @@
 import React from 'react'
-import { SafeAreaView, ScrollView } from 'react-native'
+import { SafeAreaView } from 'react-native'
 import { Text } from '../Text'
 import Header from '../Header'
 import styles from './styles'
 import { styles as headerStyles } from '../Header/styles'
 import FontAwesome from 'react-native-vector-icons/Ionicons'
-import { useScroller } from '../ScrollContext'
+import { ScrollView } from '../ScrollContext'
 
 export const Document = (props: any) => {
 
-  const scroller = useScroller();
+  console.log('re-render');
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -29,10 +29,6 @@ export const Document = (props: any) => {
       />
       <ScrollView
         contentContainerStyle={styles.container}
-        onScroll={({ nativeEvent }) => {
-          scroller.updateOffset(nativeEvent.contentOffset.y);
-        }}
-        scrollEventThrottle={200}
       >
         <Text style={styles.title}>My Header</Text>
 
