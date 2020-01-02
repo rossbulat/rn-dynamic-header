@@ -10,12 +10,12 @@ const withinLimits = (offset: number, min: number, max: number): number =>
       ? min
       : offset
 
-export const ScrollContext = React.createContext<Partial<ScrollContextInterface>>({
+export const ScrollContext = React.createContext<ScrollContextInterface>({
   opacity: 0,
   maxOffset: 0,
   offset: 0,
   titleShowing: false,
-  updateOffset: () => { }
+  updateOffset: (val: number) => { }
 });
 
 export const useScroller = () => React.useContext(ScrollContext);
