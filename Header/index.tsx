@@ -13,7 +13,6 @@ export const Header = (props: HeaderProps) => {
   );
 
   useEffect(() => {
-
     titleShowing === false &&
       Animated.timing(
         titleFade, {
@@ -31,7 +30,6 @@ export const Header = (props: HeaderProps) => {
         useNativeDriver: true,
         easing: Easing.sin
       }).start();
-
   });
 
   return (
