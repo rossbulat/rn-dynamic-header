@@ -3,12 +3,12 @@ import { ScrollView as ScrollViewNative } from 'react-native'
 import { ScrollContextInterface } from './types'
 import { ChildProps } from '../types'
 
-const withinLimits = (offset: number, min: number, max: number): number =>
-  offset > max
+const withinLimits = (val: number, min: number, max: number): number =>
+  val > max
     ? max
-    : offset < min
+    : val < min
       ? min
-      : offset
+      : val
 
 export const ScrollContext = React.createContext<ScrollContextInterface>({
   opacity: 0,
