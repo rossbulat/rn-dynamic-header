@@ -35,8 +35,6 @@ export const ScrollContextProvider = (props: ChildProps) => {
     setOpacity(withinLimits(val * maxOffset / 1000, 0, 1));
   }
 
-  console.log('re-render');
-
   return (
     <ScrollContext.Provider value={{
       opacity: opacity,

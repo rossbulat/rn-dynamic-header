@@ -7,9 +7,7 @@ import { styles as headerStyles } from '../Header/styles'
 import FontAwesome from 'react-native-vector-icons/Ionicons'
 import { ScrollView } from '../ScrollContext'
 
-export const Document = (props: any) => {
-
-  console.log('re-render');
+export const Document = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
