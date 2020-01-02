@@ -14,26 +14,24 @@ export const Header = (props: HeaderProps) => {
 
   useEffect(() => {
 
-    if (offset < maxOffset) {
-      titleShowing === false &&
-        Animated.timing(
-          titleFade, {
-          toValue: 0,
-          duration: 200,
-          useNativeDriver: true,
-          easing: Easing.sin
-        }).start();
+    titleShowing === false &&
+      Animated.timing(
+        titleFade, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: true,
+        easing: Easing.sin
+      }).start();
 
-    } else {
-      titleShowing === true &&
-        Animated.timing(
-          titleFade, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: true,
-          easing: Easing.sin
-        }).start();
-    }
+    titleShowing === true &&
+      Animated.timing(
+        titleFade, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+        easing: Easing.sin
+      }).start();
+
   });
 
   return (
