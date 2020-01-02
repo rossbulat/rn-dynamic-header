@@ -22,8 +22,8 @@ export const useScroller = () => React.useContext(ScrollContext);
 
 export const ScrollContextProvider = (props: ChildProps) => {
 
-  const minOffset = 0;
-  const maxOffset = 30;
+  const minOffset: number = 0;
+  const maxOffset: number = 30;
 
   const [offset, setOffset] = useState(0);
   const [titleShowing, setTitleShowing] = useState(false);
