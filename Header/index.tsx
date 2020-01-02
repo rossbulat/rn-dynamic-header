@@ -6,7 +6,7 @@ import { HeaderProps } from './types'
 
 export const Header = (props: HeaderProps) => {
 
-  const { offset, maxOffset, titleShowing, opacity } = useScroller();
+  const { titleShowing, opacity } = useScroller();
 
   const [titleFade] = useState(
     new Animated.Value(0)
